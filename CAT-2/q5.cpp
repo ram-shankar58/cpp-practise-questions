@@ -1,3 +1,10 @@
+/*
+Write a C++ program utilising constructors and destroctors to manipulate an array of non negative integers, 'arr', by cliclically shifting its elements to the right
+by k positions., For instance, gien an input array arr=[1,2,3,4,5,6,7], and a shift value k=3, the program should output the transformed array [5,6,7,1,2,3,4].
+If shift value k=1, output is [7,1,2,3,4,5,6]. Illustrate the working of the algorithm and provide comments with explanations of code.
+
+Note: Input array should be passed to the constructoer of the "ShiftArray" class from the main function
+
 #include <iostream>
 
 class ShiftArray{
