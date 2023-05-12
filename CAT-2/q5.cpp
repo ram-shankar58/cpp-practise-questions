@@ -15,6 +15,10 @@ public:
         shift = k;
     }
 
+    ~ShiftArray(){
+        cout << "idk what to do here to be honest";
+    }
+
     void cyclicShift(){
         int temp[arr.length()];
         int index = 0;
