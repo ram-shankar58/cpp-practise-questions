@@ -1,0 +1,79 @@
+/* convert cartesian to polar coordinates*/
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+class Polar {
+protected:
+    int r;
+    int a;
+
+public:
+    Polar(int rad, int ang) : r(rad), a(ang) {}
+
+    void convertToRect();
+    void printStats();
+};
+
+class Rectangular : public Polar {
+protected:
+    int x;
+    int y;
+
+public:
+    Rectangular(int rad, int ang) : Polar(rad, ang) {
+        convertToRect();
+    }
+
+    Rectangular operator+(const Rectangular& obj) {
+        Rectangular temp(x + obj.x, y + obj.y);
+        return temp;
+    }
+
+    void convertToPolar();
+    void printStats();
+};
+
+void Polar::convertToRect() {
+    x = r * cos(a);
+    y = r * sin(a);
+}
+
+void Polar::printStats() {
+    cout << "Radius: " << r << endl;
+    cout << "Angle: " << a << endl;
+}
+
+void Rectangular::convertToPolar() {
+    r = sqrt(x * x + y * y);
+    a = atan2(y, x);
+}
+
+void Rectangular::printStats() {
+    cout << "x: " << x << endl;
+    cout << "y: " << y << endl;
+}
+
+int main() {
+    Polar p1(3, 2);
+    Polar p2(-24, 5);
+
+    Rectangular t1(p1.r * cos(p1.a), p1.r * sin(p1.a));
+    Rectangular t2(p2.r * cos(p2.a), p2.r * sin(p2.a));
+
+    cout << "This in rectangular is: " << endl;
+    t1.printStats();
+    t2.printStats();
+    cout << endl;
+
+    cout << "Adding these objects" << endl;
+    Rectangular t3 = t1 + t2;
+    t3.printStats();
+
+    t3.convertToPolar();
+    cout << "After adding and converting back to polar form, we have:" << endl;
+    t3.printStats();
+
+    return 0;
+}
