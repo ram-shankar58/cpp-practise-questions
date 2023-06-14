@@ -1,0 +1,54 @@
+/*Certainly! Here's a simpler question involving inheritance and polymorphism:
+
+Consider a scenario where you have two classes: Shape and Circle. The Shape class serves as the base class, while the Circle class is derived from Shape.
+
+The Shape class has a protected member variable called color and a public member function called printColor(), which prints the color of the shape.
+
+The Circle class inherits from Shape and adds an additional private member variable called radius. It also has a public member function called printRadius(), which prints the radius of the circle.
+
+Implement these classes with appropriate access specifiers and member functions. Create an instance of the Circle class, set values for the color and radius, and demonstrate the usage of the printColor() and printRadius() functions.
+
+Note: You may choose appropriate data types for the variables and define additional member functions as needed. Make sure to include all necessary headers, declarations, and definitions for the classes and functions used in the program.
+*/
+//code: 
+#include <iostream>
+#include <string>
+
+class Shape {
+protected:
+    std::string color;
+
+public:
+    void printColor() {
+        std::cout << "Color: " << color << std::endl;
+    }
+};
+
+class Circle : public Shape {
+private:
+    double radius;
+
+public:
+    void printRadius() {
+        std::cout << "Radius: " << radius << std::endl;
+    }
+
+    void setColor(const std::string& color) {
+        this->color = color;
+    }
+
+    void setRadius(double radius) {
+        this->radius = radius;
+    }
+};
+
+int main() {
+    Circle circle;
+    circle.setColor("Red");
+    circle.setRadius(5.0);
+
+    circle.printColor();
+    circle.printRadius();
+
+    return 0;
+}
